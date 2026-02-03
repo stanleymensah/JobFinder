@@ -2,6 +2,8 @@ import { NavLink } from "react-router-dom";
 import { FaUserLarge } from "react-icons/fa6";
 import { PiInfinityBold } from "react-icons/pi";
 import { IoNotificationsOutline } from "react-icons/io5";
+import { RxHamburgerMenu } from "react-icons/rx";
+import DropDown from "../UI/DropDown";
 
 export default function Header() {
   return (
@@ -10,7 +12,8 @@ export default function Header() {
         <div className="left w-1/5">
           <PiInfinityBold color="#2a85ff" size="35px" />
         </div>
-        <div className="middle w-3/5 flex gap-5 justify-center h-full items-center">
+        
+        <div className="middle hidden md:flex w-3/5 gap-5 justify-center h-full items-center">
           <NavLink
             to="/"
             className={({ isActive }) =>
@@ -44,10 +47,13 @@ export default function Header() {
             About us
           </NavLink>
         </div>
-        <div className="right w-1/5 flex items-center justify-end gap-5">
+        <div className="right hidden md:flex w-1/5 items-center justify-end gap-5">
           <IoNotificationsOutline size="20px" />
           <span className="">John Doe</span>
           <FaUserLarge />
+        </div>
+        <div className="md:hidden">
+          <DropDown />
         </div>
       </nav>
     </header>

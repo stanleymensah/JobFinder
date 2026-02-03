@@ -7,7 +7,7 @@ export default function JobFilter() {
           <button className="text-red-500">Clear all</button>
         </div>
 
-        <div className="job-type flex flex-col text-sm font-semibold gap-2">
+        <div className="job-type flex flex-row flex-wrap justify-between text-sm font-semibold gap-2 md:flex-col">
           <div className="flex gap-1">
             <input type="checkbox" name="fulltime" id="" />
             <label htmlFor="">Full time</label>
@@ -30,13 +30,7 @@ export default function JobFilter() {
           </div>
         </div>
 
-        <div className="salary-range flex flex-col text-sm my-3 gap-2 font-semibold">
-          <span>Salary Range</span>
-
-          <input type="range" name="" id="" />
-        </div>
-
-        <div className="experience flex flex-col text-sm font-semibold gap-2">
+        <div className="experience flex flex-row flex-wrap mt-3 justify-between text-sm font-semibold gap-2 md:flex-col">
           <div className="flex gap-1">
             <input type="checkbox" name="entry" id="" />
             <label htmlFor="">Entry Level</label>
