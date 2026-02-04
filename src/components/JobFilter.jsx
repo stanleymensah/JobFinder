@@ -44,6 +44,10 @@ export default function JobFilter() {
             <label htmlFor="">Expert</label>
           </div>
         </div>
+
+        <button className="bg-primary text-white w-full mt-6 py-2 rounded-full hover:bg-blue-600 transition">
+          Apply Filters
+        </button>
       </form>
     </div>
   );
