@@ -3,6 +3,7 @@ import JobCard from "../components/JobCard";
 import JobFilter from "../components/JobFilter";
 import { RxMixerHorizontal } from "react-icons/rx";
 import ScrollToTop from "../components/ScrollToTop";
+import axios from "axios";
 
 export default function JobSection() {
   const [jobs, setJobs] = useState([]);
@@ -10,23 +11,15 @@ export default function JobSection() {
   const scrollRef = useRef(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/jobs")
-      .then((res) => res.json())
-      .then((data) => {
-        // Node API returns 'jobs' not 'results'
-        if (!data.jobs) {
-          console.log("API DATA: ", data);
-          setJobs([]);
-          setLoading(false);
-          return;
-        }
-        setJobs(data.jobs);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error(err);
-        setLoading(false);
-      });
+    axios.get("http://localhost:5000/api/jobs")
+    .then((res)=> {
+      setJobs(res.data.jobs);
+      setLoading(false);
+    })
+    .catch((err) => {
+      console.error(err);
+      setLoading(false);
+    });
   }, []);
 
   return (
