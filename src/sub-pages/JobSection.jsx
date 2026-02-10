@@ -1,24 +1,36 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import JobCard from "../components/JobCard";
 import JobFilter from "../components/JobFilter";
 import { RxMixerHorizontal } from "react-icons/rx";
-import ScrollToTop from "../components/ScrollToTop";
+import ScrollToTop from "../UI/ScrollToTop";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 
-const fetchJobs = async () => {
-  const res = await axios.get("http://localhost:5000/api/jobs");
+const fetchJobs = async ({queryKey}) => {
+  const [_key, filters] = queryKey;
+  // Build params object, only including type if it's not empty
+  const params = {};
+  if (filters.type && Array.isArray(filters.type) && filters.type.length > 0) {
+    // Send as comma-separated string
+    params.type = filters.type.join(",");
+  } else if (filters.type && typeof filters.type === "string" && filters.type.length > 0) {
+    params.type = filters.type;
+  }
+  const res = await axios.get("http://localhost:5000/api/jobs", { params });
   return res.data.jobs;
 };
 
 export default function JobSection() {
   const scrollRef = useRef(null);
+  const [filters, setFilters] = useState({
+    type: ""
+  })
   const {
-    data: jobs,
+    data: jobs = [],
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ["jobs"],
+    queryKey: ["jobs", filters],
     queryFn: fetchJobs,
   });
 
@@ -39,7 +51,7 @@ export default function JobSection() {
 
       <div className="bottom flex flex-col gap-4 pt-3 md:flex-row">
         <div className="left w-full md:w-1/5">
-          <JobFilter />
+          <JobFilter onApply={setFilters}/>
         </div>
         <div
           className="right flex justify-center w-full  overflow-y-auto h-[600px] p-2 md:w-4/5"

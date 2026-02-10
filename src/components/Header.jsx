@@ -17,7 +17,7 @@ export default function Header() {
           <NavLink
             to="/"
             className={({ isActive }) =>
-              `${isActive ? "text-primary border-b-3" : "text-white"}`
+              `${isActive ? "text-primary border-b-3 h-full flex items-center justify-center" : "text-white"}`
             }
           >
             Find Jobs
@@ -25,7 +25,7 @@ export default function Header() {
           <NavLink
             to="talents"
             className={({ isActive }) =>
-              `${isActive ? "text-primary border-b-3" : "text-white"}`
+              `${isActive ? "text-primary border-b-3 h-full flex items-center justify-center" : "text-white"}`
             }
           >
             Find Talents
@@ -33,7 +33,7 @@ export default function Header() {
           <NavLink
             to="upload"
             className={({ isActive }) =>
-              `${isActive ? "text-primary border-b-3" : "text-white"}`
+              `${isActive ? "text-primary border-b-3 h-full flex items-center justify-center" : "text-white"}`
             }
           >
             Upload Job
@@ -41,7 +41,7 @@ export default function Header() {
           <NavLink
             to="about"
             className={({ isActive }) =>
-              `${isActive ? "text-primary border-b-3" : "text-white"}`
+              `${isActive ? "text-primary border-b-3 h-full flex items-center justify-center" : "text-white"}`
             }
           >
             About us

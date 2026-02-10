@@ -42,7 +42,7 @@ export default function SearchBar() {
             <button className="bg-primary text-white w-10 h-12 rounded-lg flex items-center justify-center md:hidden">
               <FiSearch size="25px" />
             </button>
-              <button className="hidden md:block bg-primary text-white w-24 h-13 rounded-full hover:bg-blue-600 transition">
+              <button className="hidden md:block bg-primary text-white w-24 h-13 rounded-full hover:bg-blue-600 transition cursor-pointer">
                 Search
               </button>
               
